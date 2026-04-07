@@ -68,5 +68,5 @@ emits sox's own internal format, which avoids specifying all those
 flags manually:
 
 ```bash
-sox input.wav -p trim 10 | sox - norm -3 output.wav
+sox input.wav -p trim 10 | sox - output.wav norm -3
 ```

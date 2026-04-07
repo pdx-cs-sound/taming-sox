@@ -70,9 +70,10 @@ sox test.wav out.wav norm -3    # peak to -3 dBFS (safer headroom)
 Use `-n` as the output to discard audio and just print statistics:
 
 ```bash
-sox test.wav -n stat
-sox test.wav -n stats     # per-channel version
+sox test.wav -n stat     # linear amplitudes, whole file mixed to mono
+sox test.wav -n stats    # dB levels, per-channel columns
 ```
 
-Stats print to stderr. Useful for spotting clipping before it
-becomes a problem.
+`stats` is generally more useful: it reports in dB and breaks out
+each channel separately. `stat` reports linear amplitude values,
+which are harder to interpret. Both print to stderr.

@@ -8,8 +8,8 @@ We need audio to work with. This command generates it:
 sox -n test.wav synth 10 sine 440 gain -6
 ```
 
-That produces a 10-second 440 Hz sine wave at a safe level with a
-little headroom. We'll explain `synth` and `-n` fully in chapter 10;
+That produces a 10-second 440 Hz sine wave at −6 dB (half amplitude),
+which leaves headroom for effects that add energy. We'll explain `synth` and `-n` fully in chapter 10;
 for now treat it as a recipe.
 
 ## Inspecting files with soxi
