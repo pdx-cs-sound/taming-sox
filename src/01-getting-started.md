@@ -5,12 +5,12 @@
 We need audio to work with. This command generates it:
 
 ```bash
-sox -n test.wav synth 3 sine 440
+sox -n test.wav synth 10 sine 440 gain -6
 ```
 
-That produces a 3-second 440 Hz sine wave. We'll explain `synth` and
-`-n` fully in chapter 10; for now treat it as a recipe. Each chapter
-will tell you which test files to generate.
+That produces a 10-second 440 Hz sine wave at a safe level with a
+little headroom. We'll explain `synth` and `-n` fully in chapter 10;
+for now treat it as a recipe.
 
 ## Inspecting files with soxi
 
@@ -25,8 +25,8 @@ Input File     : 'test.wav'
 Channels       : 1
 Sample Rate    : 48000
 Precision      : 32-bit
-Duration       : 00:00:03.00 = 144000 samples ~ 225 CDDA sectors
-File Size      : 576k
+Duration       : 00:00:10.00 = 480000 samples ~ 750 CDDA sectors
+File Size      : 1.92M
 Bit Rate       : 1.54M
 Sample Encoding: 32-bit Signed Integer PCM
 ```
@@ -51,19 +51,22 @@ play test.wav
 `play` is sox with your speaker as the implicit output. It is
 literally a symlink to the same binary.
 
-Adjust playback volume with `-v` (a number, not decibels):
+Scale the playback amplitude with `-v` (`1.0` = unchanged, `0.5` = half
+amplitude). Despite the name suggesting volume, `-v` operates on amplitude, which is a
+linear scale — halving the amplitude reduces perceived loudness by 6 dB,
+not by half. Use `gain` (chapter 3) if you want to think in decibels:
 
 ```bash
 play -v 0.5 test.wav
 ```
 
-Play only the first two seconds:
+Play only the first half-second:
 
 ```bash
-play test.wav trim 0 2
+play test.wav trim 0 0.5
 ```
 
-That `trim 0 2` at the end is an *effect*. Don't worry about the
+That `trim 0 0.5` at the end is an *effect*. Don't worry about the
 syntax yet — chapter 2 will make it click.
 
 ## Recording with rec

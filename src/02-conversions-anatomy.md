@@ -38,22 +38,21 @@ sox  [global opts]  [input opts]  infile(s)  [output opts]  outfile  [effects...
 no Zone 3 (the speaker is implicit). `rec` has no Zone 2 (the
 microphone is implicit).
 
-### The Zone 2 trap
+### Format flags are positional
 
-Format flags are *positional*: they describe the next filename in the
-command. Same flag, completely different meaning depending on where
-you put it:
+A format flag describes the *next* filename in the command — input
+or output, depending on where you place it:
 
 ```bash
-# WRONG: -r 8000 appears before the output, so it describes the output
-sox input.wav -r 8000 output.wav
-
-# RIGHT: -r 8000 before the input describes the input
-sox -r 8000 input.wav output.wav
+sox -r 8000 input.wav output.wav   # input is 8000 Hz; output rate unchanged
+sox input.wav -r 8000 output.wav   # output is resampled to 8000 Hz; input rate unchanged
+sox -r 16000 input.wav -r 8000 output.wav  # both specified explicitly
 ```
 
-This is the most common source of silent bugs in sox commands.
-Format options are covered fully in chapter 5.
+All three are valid and mean different things. Placing a flag in the
+wrong zone will silently produce a different result than you intended,
+which is the most common source of bugs in sox commands. Format
+options are covered fully in chapter 5.
 
 ### Zone 4: effects come last
 
