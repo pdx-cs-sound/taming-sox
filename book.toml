@@ -1,0 +1,8 @@
+[book]
+title = "Taming sox"
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "navy"
+git-repository-url = ""
