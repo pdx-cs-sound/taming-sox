@@ -23,13 +23,15 @@ soxi test.wav
 ```
 Input File     : 'test.wav'
 Channels       : 1
-Sample Rate    : 8000
-Precision      : 16-bit
-Duration       : 00:00:03.00 = 24000 samples = 225 CDDA sectors
-File Size      : 48.0k
-Bit Rate       : 128k
-Sample Encoding: 16-bit Signed Integer PCM
+Sample Rate    : 48000
+Precision      : 32-bit
+Duration       : 00:00:03.00 = 144000 samples ~ 225 CDDA sectors
+File Size      : 576k
+Bit Rate       : 1.54M
+Sample Encoding: 32-bit Signed Integer PCM
 ```
+
+The exact values depend on your system's default audio configuration.
 
 Useful individual fields:
 
@@ -70,6 +72,6 @@ syntax yet — chapter 2 will make it click.
 input.
 
 ```bash
-rec capture.wav    # record until Ctrl-C
-rec -d 5 capture.wav  # record for 5 seconds
+rec capture.wav              # record until Ctrl-C
+rec capture.wav trim 0 5     # record for 5 seconds
 ```

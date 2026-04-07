@@ -2,7 +2,7 @@
 
 **Setup:**
 ```bash
-sox -n source.wav synth 10 sine 440
+sox -n source.wav synth 10 sine 440 gain -6
 ```
 
 ## trim — cut out a section

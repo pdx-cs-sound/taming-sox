@@ -2,7 +2,7 @@
 
 **Setup:**
 ```bash
-sox -n source.wav synth 5 sine 440
+sox -n source.wav synth 5 sine 440 gain -6
 ```
 
 Filters shape the frequency content of audio. A quick reference:

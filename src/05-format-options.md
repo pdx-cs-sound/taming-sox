@@ -32,7 +32,7 @@ Sox resamples automatically.
 ## Changing bit depth and channels
 
 ```bash
-sox -b 16 input.wav -b 24 output.wav    # 16-bit → 24-bit
+sox input.wav -b 24 output.wav    # convert to 24-bit
 sox stereo.wav -c 1 mono.wav            # stereo → mono (averages channels)
 sox mono.wav -c 2 stereo.wav            # mono → stereo (duplicates channel)
 ```
@@ -68,5 +68,5 @@ emits sox's own internal format, which avoids specifying all those
 flags manually:
 
 ```bash
-sox input.wav -p trim 10 | sox -p - norm -3 output.wav
+sox input.wav -p trim 10 | sox - norm -3 output.wav
 ```

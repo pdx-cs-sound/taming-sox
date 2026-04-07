@@ -2,10 +2,10 @@
 
 **Setup:**
 ```bash
-sox -n a.wav synth 3 sine 440
-sox -n b.wav synth 3 sine 660
-sox -n music.wav synth 5 sine 220
-sox -n voice.wav synth 5 sine 880
+sox -n a.wav synth 3 sine 440 gain -6
+sox -n b.wav synth 3 sine 660 gain -6
+sox -n music.wav synth 5 sine 220 gain -6
+sox -n voice.wav synth 5 sine 880 gain -6
 ```
 
 ## Concatenation — A then B

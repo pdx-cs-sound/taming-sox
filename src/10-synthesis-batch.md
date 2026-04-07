@@ -45,11 +45,12 @@ sox -n cmajor.wav synth 2 sine 261.63 sine 329.63 sine 392.00 gain -6
 
 ### Specifying output format
 
-`synth` defaults to 8 kHz mono 16-bit. Override with format flags
-before `-n`:
+The output format follows your system's default audio configuration,
+which may not be what you want. Specify it explicitly with format
+flags before `-n`:
 
 ```bash
-sox -n -r 44100 -b 16 -c 2 out.wav synth 3 sine 440
+sox -n -r 44100 -b 16 -c 1 out.wav synth 3 sine 440
 ```
 
 ### Real-time synthesis with play
@@ -125,7 +126,7 @@ The `-p` flag emits sox's internal format on stdout — no need to
 specify sample rate, bit depth, or encoding on the receiving end:
 
 ```bash
-sox input.wav -p trim 10 20 | sox -p - reverb 80 output.wav
+sox input.wav -p trim 10 20 | sox - reverb 80 output.wav
 ```
 
 This avoids intermediate files in multi-step pipelines.

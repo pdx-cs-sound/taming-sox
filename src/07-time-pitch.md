@@ -2,7 +2,7 @@
 
 **Setup:**
 ```bash
-sox -n source.wav synth 5 sine 440
+sox -n source.wav synth 5 sine 440 gain -6
 ```
 
 Four effects; two axes:
