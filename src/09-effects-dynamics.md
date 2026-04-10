@@ -2,18 +2,14 @@
 
 **Setup:**
 ```bash
-# Harmonically rich source for reverb, echo, chorus, flanger
-sox -n source.wav synth 5 sawtooth 220 gain -6
+# Real music for reverb, echo, chorus, flanger
+cp samples/music.wav source.wav
 
 # Varying dynamics for compand: loud / quiet / loud
 sox -n _loud.wav synth 2 sawtooth 220 gain -6
 sox -n _quiet.wav synth 2 sawtooth 220 gain -20
 sox _loud.wav _quiet.wav _loud.wav dynamics.wav
 ```
-
-A sine wave at a single frequency reveals little about spatial or
-modulation effects. Sawtooth waves have harmonics across the whole
-spectrum, making reverb, echo, chorus and flanger all clearly audible.
 
 ## reverb
 
@@ -107,7 +103,8 @@ Breaking that down:
 - `-90` — initial signal level
 - `0.2` — delay before processing
 
-A practical podcast leveling chain:
+A practical podcast leveling chain (substitute `voice.wav` for a
+real recording):
 
 ```bash
 sox dynamics.wav podcast.wav \
