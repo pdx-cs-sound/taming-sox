@@ -4,18 +4,27 @@ Four effects; two axes:
 
 | Effect | Changes speed? | Changes pitch? | Notes |
 |--------|:--------------:|:--------------:|-------|
-| `rate` | yes | yes | simple resampling |
+| `rate` | no | no | proper resampler; changes sample rate only |
 | `speed` | yes | yes | varispeed tape |
 | `tempo` | yes | no | time-stretch, pitch preserved |
 | `pitch` | no | yes | pitch-shift, duration preserved |
 
-## rate — the blunt instrument
+## rate — resampling
 
-Changes the declared sample rate, which changes both speed and pitch:
+Resamples the audio to a new sample rate. Pitch and duration are
+both preserved — the output just has fewer (or more) samples per
+second. Use it to change the technical format of a file, not to
+alter how it sounds:
 
 ```bash
-sox test.wav out.wav rate 22050    # half speed, half pitch
+sox test.wav out.wav rate 22050    # downsample to 22050 Hz
+sox test.wav out.wav rate 48000    # upsample to 48000 Hz
 ```
+
+This is equivalent to writing `-r 22050 out.wav` as a Zone 3 format
+flag, but as an explicit effect it fits naturally in a chain and
+gives access to quality options (`-h` for high quality, `-v` for
+very high quality).
 
 ## speed — varispeed
 
@@ -29,7 +38,8 @@ sox test.wav out.wav speed 0.75   # slower and lower
 
 ## tempo — time-stretch only
 
-Changes duration while preserving pitch. Uses the WSOLA algorithm.
+Changes duration while preserving pitch using the WSOLA algorithm
+(chops audio into overlapping segments and re-stitches them).
 Practical range: 0.5–2.0.
 
 ```bash
@@ -37,26 +47,86 @@ sox test.wav out.wav tempo 1.2    # 20% faster, same pitch
 sox test.wav out.wav tempo 0.8    # 20% slower, same pitch
 ```
 
-For speech, add `-s` for better quality:
+Three presets tune the algorithm for different material:
 
 ```bash
-sox lecture.wav slow.wav tempo -s 0.75
+sox test.wav out.wav tempo -m 1.2   # music (default)
+sox test.wav out.wav tempo -s 0.75  # speech
+sox test.wav out.wav tempo -l 1.1   # linear (least CPU, more artefacts)
 ```
 
 ## pitch — pitch-shift only
 
 Argument is in *cents* (100 cents = 1 semitone, 1200 = one octave).
-Uses a phase vocoder; computationally expensive.
 
 ```bash
 sox test.wav out.wav pitch 200     # up 2 semitones
 sox test.wav out.wav pitch -1200   # down one octave
 ```
 
+`pitch` uses the same WSOLA algorithm as `tempo` — it is implemented
+as a `tempo` stretch followed by a `rate` resample in the opposite
+direction, so the duration cancels out and only the pitch shift
+remains. The `-m/-s/-l` presets are not exposed on `pitch`, but you
+can pass the same `segment search overlap` tuning parameters if needed.
+
+## stretch — OLA (occasionally useful)
+
+Sox also has `stretch`, which uses basic Overlap-Add rather than
+WSOLA. OLA chops audio into fixed-position windows and crossfades
+them; WSOLA adds a cross-correlation search to find where waveforms
+align before overlapping, avoiding phase cancellation artefacts.
+`stretch` is faster and can occasionally outperform `tempo` for
+factors very close to 1.0, where the fixed-position error is small
+enough not to matter. For anything else, prefer `tempo`.
+
+```bash
+sox test.wav out.wav stretch 1.2   # time-stretch by factor (>1 = longer)
+```
+
+Note that `stretch`'s factor is the opposite sense to `tempo`: `1.2`
+means 20% longer, where `tempo 1.2` means 20% faster.
+
 ## Combining them
 
-`tempo` and `pitch` are independent, so you can combine freely:
+`tempo` and `pitch` are independent effects applied in sequence:
 
 ```bash
 sox test.wav out.wav tempo 1.2 pitch -400   # faster but lower
+```
+
+## See also: Rubber Band
+
+Sox has no phase vocoder implementation. For higher-quality
+time-stretching and pitch-shifting — particularly on music or when
+WSOLA artefacts are noticeable — `rubberband` is the standard tool
+(`apt install rubberband-cli`).
+
+```bash
+rubberband --tempo 1.2 input.wav output.wav   # 20% faster (same sense as sox tempo)
+rubberband --time 0.8 input.wav output.wav    # 0.8x duration (--time is 1/--tempo)
+rubberband --pitch 2 input.wav output.wav     # up 2 semitones (not cents)
+rubberband --pitch -2 --tempo 1.1 input.wav output.wav  # combine freely
+```
+
+Rubberband has two engines: R2 (default, fast, WSOLA-based) and R3
+(slower, phase vocoder, noticeably better on music):
+
+```bash
+rubberband --fine --pitch 4 input.wav output.wav   # R3 engine
+rubberband-r3 --pitch 4 input.wav output.wav       # equivalent
+```
+
+For vocal pitch-shifting, `--formant` preserves the formant
+structure so voices don't sound cartoonish:
+
+```bash
+rubberband --fine --formant --pitch 3 voice.wav output.wav
+```
+
+Rubberband does not support stdout, so combine with sox via a temp
+file for format conversion:
+
+```bash
+rubberband -q --pitch 2 input.wav tmp.wav && sox tmp.wav output.flac
 ```
