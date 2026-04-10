@@ -1,9 +1,13 @@
 # Effects and Dynamics
 
+**Sample file** — download and place in your working directory:
+
+<audio controls src="samples/music.wav"></audio>
+<a href="samples/music.wav" download>⬇ music.wav</a> — "Erase Data" by Koi-discovery (CC0)
+
 **Setup:**
 ```bash
-# Real music for reverb, echo, chorus, flanger
-cp samples/music.wav source.wav
+cp music.wav source.wav   # use the downloaded music.wav
 
 # Varying dynamics for compand: loud / quiet / loud
 sox -n _loud.wav synth 2 sawtooth 220 gain -6

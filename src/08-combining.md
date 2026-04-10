@@ -1,11 +1,18 @@
 # Combining Files
 
+**Sample files** — download and place in your working directory:
+
+<audio controls src="samples/music.wav"></audio>
+<a href="samples/music.wav" download>⬇ music.wav</a> — "Erase Data" by Koi-discovery (CC0)
+
+<audio controls src="samples/voice.wav"></audio>
+<a href="samples/voice.wav" download>⬇ voice.wav</a> (CC0)
+
 **Setup:**
 ```bash
 sox -n a.wav synth 3 sine 440 gain -6
 sox -n b.wav synth 3 sine 660 gain -6
-cp samples/music.wav music.wav
-cp samples/voice.wav voice.wav
+# use the downloaded music.wav and voice.wav directly
 ```
 
 ## Per-input Zone 2 flags
