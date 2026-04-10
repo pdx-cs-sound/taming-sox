@@ -13,10 +13,8 @@ Clip: 10 seconds starting at 0:08.
 
 ## voice.wav
 
-Record your own with:
+**Author:** bart (repository author)  
+**License:** CC0 1.0 Universal (Public Domain)  
+https://creativecommons.org/publicdomain/zero/1.0/
 
-```bash
-rec samples/voice.wav trim 0 10
-```
-
-Or substitute any short speech WAV.
+Converted from 8-bit to 16-bit on ingest.

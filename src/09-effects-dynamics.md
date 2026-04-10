@@ -103,8 +103,8 @@ Breaking that down:
 - `-90` — initial signal level
 - `0.2` — delay before processing
 
-A practical podcast leveling chain (substitute `voice.wav` for a
-real recording):
+A practical podcast leveling chain (use `samples/voice.wav` or
+your own recording):
 
 ```bash
 sox dynamics.wav podcast.wav \
