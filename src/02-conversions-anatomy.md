@@ -49,7 +49,13 @@ output, use `vol` or `gain` in the effects chain.
 
 **`play` and `rec`** are just sox with one zone missing. `play` has
 no Zone 3 (the speaker is implicit). `rec` has no Zone 2 (the
-microphone is implicit).
+microphone is implicit). Any effect chain you'd write after the
+output filename in `sox` comes directly after the input in `play`:
+
+```bash
+sox  input.wav output.wav highpass 300 norm -3
+play input.wav            highpass 300 norm -3
+```
 
 ### Format flags are positional
 

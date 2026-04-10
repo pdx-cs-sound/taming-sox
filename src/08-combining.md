@@ -57,20 +57,20 @@ sox a.wav b.wav out.wav splice 3    # crossfade at the 3-second mark
 The `-m` flag (Zone 1) sums inputs together rather than concatenating:
 
 ```bash
-sox -m music.wav voice.wav mixed.wav
+play -m music.wav voice.wav
 ```
 
 Mixing raises the overall level — normalize afterward to avoid
 clipping:
 
 ```bash
-sox -m music.wav voice.wav mixed.wav norm -3
+play -m music.wav voice.wav norm -3
 ```
 
 Set per-file volume with `-v` immediately before each input:
 
 ```bash
-sox -m -v 0.3 music.wav -v 1.0 voice.wav out.wav norm -3
+play -m -v 0.3 music.wav -v 1.0 voice.wav norm -3
 ```
 
 ## Merging channels — A and B side by side
@@ -89,10 +89,10 @@ explicit control. Each argument describes one output channel by
 naming the input channel(s) that feed it.
 
 ```bash
-sox stereo.wav out.wav remix 2 1       # swap L and R
-sox stereo.wav mono.wav remix -        # average all channels to mono
-sox stereo.wav mono.wav remix 1        # keep left channel only, drop right
-sox stereo.wav out.wav remix 1,2 1,2   # both output channels = L+R mix
+play stereo.wav remix 2 1       # swap L and R
+play stereo.wav remix -         # average all channels to mono
+play stereo.wav remix 1         # keep left channel only, drop right
+play stereo.wav remix 1,2 1,2   # both output channels = L+R mix
 ```
 
 `-` averages all input channels into one output channel — equivalent

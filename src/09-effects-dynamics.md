@@ -21,14 +21,14 @@ Simulates room acoustics. Arguments: reverberance (0–100),
 HF damping (0–100), room scale (0–100). Defaults are reasonable.
 
 ```bash
-sox source.wav out.wav reverb
-sox source.wav out.wav reverb 80 50 100    # large, bright room
+play source.wav reverb
+play source.wav reverb 80 50 100    # large, bright room
 ```
 
 `--wet-only` removes the dry signal, leaving only the wet (reverberated) signal:
 
 ```bash
-sox source.wav out.wav reverb --wet-only 80
+play source.wav reverb --wet-only 80
 ```
 
 > **Note:** `reverb` does not extend the output file. The reverb
@@ -36,7 +36,7 @@ sox source.wav out.wav reverb --wet-only 80
 > pad silence onto the end of the input first:
 >
 > ```bash
-> sox source.wav out.wav pad 0 2 reverb 80
+> play source.wav pad 0 2 reverb 80
 > ```
 
 ## echo
@@ -45,22 +45,22 @@ Discrete repeating delays. Arguments: `gain-in gain-out`, then one
 or more `delay(ms) decay` pairs.
 
 ```bash
-sox source.wav out.wav echo 0.8 0.7 500 0.4
-#                            ──── ────  ─────── ────
-#                            in  out   500ms   0.4 decay
+play source.wav echo 0.8 0.7 500 0.4
+#                    ──── ────  ─────── ────
+#                    in  out   500ms   0.4 decay
 ```
 
 Two taps:
 
 ```bash
-sox source.wav out.wav echo 0.8 0.7 500 0.4 700 0.3
+play source.wav echo 0.8 0.7 500 0.4 700 0.3
 ```
 
 ## chorus and flanger
 
 ```bash
-sox source.wav out.wav chorus 0.6 0.9 55 0.4 0.25 2 -s
-sox source.wav out.wav flanger
+play source.wav chorus 0.6 0.9 55 0.4 0.25 2 -s
+play source.wav flanger
 ```
 
 Both have complex parameter lists — the defaults are a reasonable
@@ -78,7 +78,7 @@ sox -n padded.wav synth 5 sawtooth 220 gain -6 pad 1 1
 Remove leading and trailing silence:
 
 ```bash
-sox padded.wav out.wav silence 1 0.1 1% -1 0.1 1%
+play padded.wav silence 1 0.1 1% -1 0.1 1%
 ```
 
 Each group is: `periods duration threshold`. The first group handles
@@ -88,7 +88,7 @@ For voice recordings, `vad` (voice activity detection) is simpler —
 it finds the onset of audio activity and trims everything before it:
 
 ```bash
-sox padded.wav out.wav vad
+play padded.wav vad
 ```
 
 ## compand — dynamic range compression
@@ -97,7 +97,7 @@ sox padded.wav out.wav vad
 `dynamics.wav` from the setup has 14 dB of range to work with.
 
 ```bash
-sox dynamics.wav out.wav compand 0.3,1 6:-70,-60,-20 -5 -90 0.2
+play dynamics.wav compand 0.3,1 6:-70,-60,-20 -5 -90 0.2
 ```
 
 Breaking that down:

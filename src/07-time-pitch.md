@@ -32,8 +32,8 @@ Like a tape running faster or slower. Factor > 1 speeds up and
 raises pitch; < 1 slows down and lowers pitch.
 
 ```bash
-sox test.wav out.wav speed 1.5    # faster and higher
-sox test.wav out.wav speed 0.75   # slower and lower
+play test.wav speed 1.5    # faster and higher
+play test.wav speed 0.75   # slower and lower
 ```
 
 ## tempo — time-stretch only
@@ -43,16 +43,16 @@ Changes duration while preserving pitch using the WSOLA algorithm
 Practical range: 0.5–2.0.
 
 ```bash
-sox test.wav out.wav tempo 1.2    # 20% faster, same pitch
-sox test.wav out.wav tempo 0.8    # 20% slower, same pitch
+play test.wav tempo 1.2    # 20% faster, same pitch
+play test.wav tempo 0.8    # 20% slower, same pitch
 ```
 
 Three presets tune the algorithm for different material:
 
 ```bash
-sox test.wav out.wav tempo -m 1.2   # music (default)
-sox test.wav out.wav tempo -s 0.75  # speech
-sox test.wav out.wav tempo -l 1.1   # linear (least CPU, more artefacts)
+play test.wav tempo -m 1.2   # music (default)
+play test.wav tempo -s 0.75  # speech
+play test.wav tempo -l 1.1   # linear (least CPU, more artefacts)
 ```
 
 ## pitch — pitch-shift only
@@ -60,8 +60,8 @@ sox test.wav out.wav tempo -l 1.1   # linear (least CPU, more artefacts)
 Argument is in *cents* (100 cents = 1 semitone, 1200 = one octave).
 
 ```bash
-sox test.wav out.wav pitch 200     # up 2 semitones
-sox test.wav out.wav pitch -1200   # down one octave
+play test.wav pitch 200     # up 2 semitones
+play test.wav pitch -1200   # down one octave
 ```
 
 `pitch` uses the same WSOLA algorithm as `tempo` — it is implemented
@@ -81,7 +81,7 @@ factors very close to 1.0, where the fixed-position error is small
 enough not to matter. For anything else, prefer `tempo`.
 
 ```bash
-sox test.wav out.wav stretch 1.2   # time-stretch by factor (>1 = longer)
+play test.wav stretch 1.2   # time-stretch by factor (>1 = longer)
 ```
 
 Note that `stretch`'s factor is the opposite sense to `tempo`: `1.2`
@@ -92,7 +92,7 @@ means 20% longer, where `tempo 1.2` means 20% faster.
 `tempo` and `pitch` are independent effects applied in sequence:
 
 ```bash
-sox test.wav out.wav tempo 1.2 pitch -400   # faster but lower
+play test.wav tempo 1.2 pitch -400   # faster but lower
 ```
 
 ## See also: Rubber Band

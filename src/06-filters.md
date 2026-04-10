@@ -16,9 +16,9 @@ sox -n noise.wav synth 5 pinknoise gain -6
 Remove everything below or above a cutoff frequency:
 
 ```bash
-sox noise.wav out.wav highpass 2000    # remove everything below 2 kHz
-sox noise.wav out.wav lowpass 2000     # remove everything above 2 kHz
-sox noise.wav out.wav highpass 300 lowpass 3400   # telephone band
+play noise.wav highpass 2000    # remove everything below 2 kHz
+play noise.wav lowpass 2000     # remove everything above 2 kHz
+play noise.wav highpass 300 lowpass 3400   # telephone band
 ```
 
 The telephone band example is a good one to listen to: the
@@ -31,9 +31,9 @@ Shelving filters: boost or cut below/above a crossover point.
 Argument is in dB.
 
 ```bash
-sox noise.wav out.wav bass 3      # boost bass by 3 dB
-sox noise.wav out.wav treble -6   # cut treble by 6 dB
-sox noise.wav out.wav bass 2 treble -2
+play noise.wav bass 3      # boost bass by 3 dB
+play noise.wav treble -6   # cut treble by 6 dB
+play noise.wav bass 2 treble -2
 ```
 
 ## equalizer — parametric EQ
@@ -55,9 +55,9 @@ different center frequencies.
 Stack multiple `equalizer` effects to build a full EQ:
 
 ```bash
-sox noise.wav out.wav equalizer 1000 200 -6    # cut 6 dB at 1 kHz, 200 Hz wide
-sox noise.wav out.wav equalizer 1000 2q -6     # same centre, Q=2 (500 Hz wide)
-sox noise.wav out.wav equalizer 3000 1o 3      # boost 3 dB at 3 kHz, one octave wide
+play noise.wav equalizer 1000 200 -6    # cut 6 dB at 1 kHz, 200 Hz wide
+play noise.wav equalizer 1000 2q -6     # same centre, Q=2 (500 Hz wide)
+play noise.wav equalizer 3000 1o 3      # boost 3 dB at 3 kHz, one octave wide
 ```
 
 ## A practical voice cleanup chain
