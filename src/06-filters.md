@@ -3,15 +3,27 @@
 Filters shape the frequency content of audio. A quick reference:
 human hearing spans roughly 20 Hz (low rumble) to 20 kHz (high hiss).
 
+Filtering a single sine wave is uninteresting — it either passes or
+it doesn't. Pink noise has energy across the whole spectrum, so
+filters produce an audible and visible change. Generate some:
+
+```bash
+sox -n noise.wav synth 5 pinknoise gain -6
+```
+
 ## highpass and lowpass
 
 Remove everything below or above a cutoff frequency:
 
 ```bash
-sox test.wav out.wav highpass 200     # remove rumble below 200 Hz
-sox test.wav out.wav lowpass 8000     # remove hiss above 8 kHz
-sox test.wav out.wav highpass 300 lowpass 3400   # telephone band
+sox noise.wav out.wav highpass 2000    # remove everything below 2 kHz
+sox noise.wav out.wav lowpass 2000     # remove everything above 2 kHz
+sox noise.wav out.wav highpass 300 lowpass 3400   # telephone band
 ```
+
+The telephone band example is a good one to listen to: the
+characteristic "tinny phone" sound comes entirely from cutting the
+low and high ends.
 
 ## bass and treble
 
@@ -19,19 +31,33 @@ Shelving filters: boost or cut below/above a crossover point.
 Argument is in dB.
 
 ```bash
-sox test.wav out.wav bass 3      # boost bass by 3 dB
-sox test.wav out.wav treble -6   # cut treble by 6 dB
-sox test.wav out.wav bass 2 treble -2
+sox noise.wav out.wav bass 3      # boost bass by 3 dB
+sox noise.wav out.wav treble -6   # cut treble by 6 dB
+sox noise.wav out.wav bass 2 treble -2
 ```
 
 ## equalizer — parametric EQ
 
-Three arguments: center frequency, bandwidth (Hz or `q` factor),
-gain in dB. Stack multiple `equalizer` effects to build a full EQ.
+Three arguments: center frequency, width, gain in dB. Width units
+are controlled by a suffix:
+
+| Suffix | Unit | Example |
+|--------|------|---------|
+| none | Hz | `200` = 200 Hz wide |
+| `q` | Q factor | `2q` = Q of 2 |
+| `o` | octaves | `1o` = one octave wide |
+
+Q and Hz are inversely related: a higher Q means a narrower band.
+`Q = center / bandwidth`, so `2q` at 1 kHz equals a 500 Hz bandwidth.
+Q is more useful when you want consistent relative width across
+different center frequencies.
+
+Stack multiple `equalizer` effects to build a full EQ:
 
 ```bash
-sox test.wav out.wav equalizer 1000 200 -6    # cut 6 dB at 1 kHz
-sox test.wav out.wav equalizer 3000 150 3     # boost 3 dB at 3 kHz
+sox noise.wav out.wav equalizer 1000 200 -6    # cut 6 dB at 1 kHz, 200 Hz wide
+sox noise.wav out.wav equalizer 1000 2q -6     # same centre, Q=2 (500 Hz wide)
+sox noise.wav out.wav equalizer 3000 1o 3      # boost 3 dB at 3 kHz, one octave wide
 ```
 
 ## A practical voice cleanup chain

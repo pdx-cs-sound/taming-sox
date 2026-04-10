@@ -8,6 +8,26 @@ sox -n music.wav synth 5 sine 220 gain -6
 sox -n voice.wav synth 5 sine 880 gain -6
 ```
 
+## Per-input Zone 2 flags
+
+With multiple inputs, Zone 2 format flags repeat independently for
+each input file — place them immediately before the file they describe:
+
+```bash
+sox [Zone2a] infile_a [Zone2b] infile_b [Zone3] outfile [Zone4]
+```
+
+Any Zone 2 flag works this way: `-v`, `-r`, `-b`, `-c`, `-t`, `-e`.
+The most common use is `-v` for per-input volume (shown below), and
+format flags when combining files of different types or encodings.
+
+`-v` takes a linear multiplier only — there is no dB form. Common
+conversions: −6 dB ≈ `0.5`, −12 dB ≈ `0.25`, −20 dB = `0.1`.
+
+```bash
+sox -v 0.8 a.wav -t raw -r 48000 -b 32 -c 1 -e signed-integer -v 0.5 b.raw out.wav
+```
+
 ## Concatenation — A then B
 
 List multiple inputs before the output:
@@ -57,13 +77,16 @@ sox -M left.wav right.wav stereo.wav
 
 ## remix — channel routing
 
-`remix` lets you route and combine channels explicitly. Arguments
-are output channel assignments.
+Where `-c` uses sox's default averaging/duplication, `remix` gives
+explicit control. Each argument describes one output channel by
+naming the input channel(s) that feed it.
 
 ```bash
 sox stereo.wav out.wav remix 2 1       # swap L and R
-sox stereo.wav mono.wav remix -        # mix all channels to mono
-sox stereo.wav mono.wav remix 1 2      # keep both channels
+sox stereo.wav mono.wav remix -        # average all channels to mono
+sox stereo.wav mono.wav remix 1        # keep left channel only, drop right
+sox stereo.wav out.wav remix 1,2 1,2   # both output channels = L+R mix
 ```
 
-`-` means "average all input channels into this output channel."
+`-` averages all input channels into one output channel — equivalent
+to `-c 1` but as an explicit effect. `1,2` sums channels 1 and 2.

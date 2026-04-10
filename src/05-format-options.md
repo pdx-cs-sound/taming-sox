@@ -37,8 +37,9 @@ sox stereo.wav -c 1 mono.wav            # stereo → mono (averages channels)
 sox mono.wav -c 2 stereo.wav            # mono → stereo (duplicates channel)
 ```
 
-For real channel routing rather than simple duplication, use the
-`remix` effect (chapter 8).
+`-c` uses sox's default algorithm: averaging when going down,
+duplication when going up. For anything more specific — dropping a
+channel, swapping L and R, custom mix weights — use `remix` (chapter 8).
 
 ## Reading raw PCM
 
