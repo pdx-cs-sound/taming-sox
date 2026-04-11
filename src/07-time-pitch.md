@@ -25,8 +25,13 @@ play out.wav
 
 This is equivalent to writing `-r 22050 out.wav` as a Zone 3 format
 flag, but as an explicit effect it fits naturally in a chain and
-gives access to quality options (`-h` for high quality, `-v` for
-very high quality).
+gives access to quality options:
+
+- `-h` — high quality: longer anti-aliasing filter, better stopband
+  rejection, audibly cleaner on music
+- `-v` — very high quality: even longer filter; diminishing returns
+  over `-h` but useful for archival or repeated resampling where
+  rounding errors accumulate
 
 ## speed — varispeed
 
