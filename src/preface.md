@@ -1,6 +1,6 @@
 # Taming sox
 
-by Bart Massey and Claude Code
+*Bart Massey and Claude Code*
 
 ---
 
@@ -14,6 +14,6 @@ can silently mean something completely different. This tutorial
 introduces those quirks in an order that makes them feel inevitable
 rather than arbitrary.
 
-**What you need:** sox installed (`apt install sox libsox-fmt-all`
-on Debian/Ubuntu; `brew install sox` on macOS). No audio files
-required — we generate test tones as we go.
+**What you need:** sox installed — see the
+[SoX documentation](https://sox.sourceforge.net/) for your platform.
+No audio files required — we generate test tones as we go.

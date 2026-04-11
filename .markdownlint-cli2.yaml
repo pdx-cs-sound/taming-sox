@@ -1,3 +1,4 @@
 config:
   MD013: false  # line-length — not enforced in this tutorial
   MD033: false  # inline-html — intentional for audio players
+  MD036: false  # emphasis-as-heading — used for italic byline on title page
