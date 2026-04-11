@@ -28,10 +28,12 @@ Output goes to `book/`.
 4. Chaining Effects — left-to-right pipelines, auditioning with `play`
 5. Format Options — `-r`, `-b`, `-c`, `-e`, raw PCM, piping
 6. Filters — `highpass`, `lowpass`, `bass`, `treble`, `equalizer`
-7. Time and Pitch — `speed`, `tempo`, `pitch`, `rate`
+7. Time and Pitch — `speed`, `tempo`, `pitch`, `rate`, Rubber Band
 8. Combining Files — concatenation, mixing (`-m`), merging (`-M`), `remix`
-9. Effects and Dynamics — `reverb`, `echo`, `silence`, `compand`
-10. Synthesis and Batch Processing — `synth`, shell loops, parallel processing
+9. Effects and Dynamics — `reverb`, `echo`, `chorus`, `silence`, `compand`
+10. Synthesis — `synth`, waveforms, noise, sweeps, chords
+11. Batch Processing — shell loops, parallel processing, piping
+12. Further Reading — man pages, LADSPA, ffmpeg, libsox
 
 ## Prerequisites
 
