@@ -11,5 +11,6 @@
 - [Time and Pitch](07-time-pitch.md)
 - [Combining Files](08-combining.md)
 - [Effects and Dynamics](09-effects-dynamics.md)
-- [Synthesis and Batch Processing](10-synthesis-batch.md)
-- [Further Reading](11-further.md)
+- [Synthesis](10-synthesis.md)
+- [Batch Processing](11-batch.md)
+- [Further Reading](12-further.md)
