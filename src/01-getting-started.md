@@ -50,7 +50,9 @@ play test.wav
 ```
 
 `play` is sox with your speaker as the implicit output. It is
-literally a symlink to the same binary.
+literally a symlink to the same binary. It requires a working audio
+device — on headless servers, use `sox ... -n` with `stat` or
+`soxi` to verify results instead.
 
 Scale the playback amplitude with `-v` (`1.0` = unchanged, `0.5` = half
 amplitude). Despite the name suggesting volume, `-v` operates on amplitude, which is a

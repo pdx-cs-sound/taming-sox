@@ -1,5 +1,8 @@
 # Batch Processing
 
+Sox works well in shell scripts and pipelines. The examples here
+assume a POSIX shell (`bash`, `zsh`, etc.).
+
 ## Shell loops
 
 ### Process a directory

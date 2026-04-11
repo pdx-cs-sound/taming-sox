@@ -6,4 +6,4 @@ src = "src"
 
 [output.html]
 default-theme = "navy"
-git-repository-url = ""
+git-repository-url = "https://github.com/pdx-cs-sound/taming-sox"
