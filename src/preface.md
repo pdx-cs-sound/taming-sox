@@ -16,6 +16,9 @@ can silently mean something completely different. This tutorial
 introduces those quirks in an order that makes them feel inevitable
 rather than arbitrary.
 
+The source for this book is available at
+<https://github.com/pdx-cs-sound/taming-sox>.
+
 **What you need:** sox installed — see the
 [SoX documentation](https://sox.sourceforge.net/) for your platform.
 Sample audio files are provided; test tones are generated as we go.

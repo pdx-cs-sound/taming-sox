@@ -4,6 +4,9 @@ An mdbook tutorial for the `sox` command-line audio tool, covering
 its unusual CLI in a progressive order that makes the quirks feel
 inevitable rather than arbitrary.
 
+The published book is at
+<https://pdx-cs-sound.github.io/taming-sox/>.
+
 ## Reading it
 
 ```bash
