@@ -53,8 +53,8 @@ microphone is implicit). Any effect chain you'd write after the
 output filename in `sox` comes directly after the input in `play`:
 
 ```bash
-sox  input.wav output.wav highpass 300 norm -3
-play input.wav            highpass 300 norm -3
+sox  test.wav out.wav highpass 300 norm -3
+play test.wav            highpass 300 norm -3
 ```
 
 ### Format flags are positional
@@ -63,9 +63,9 @@ A format flag describes the *next* filename in the command — input
 or output, depending on where you place it:
 
 ```bash
-sox -r 8000 input.wav output.wav   # override input's declared rate; output inherits 8000 Hz
-sox input.wav -r 8000 output.wav   # resample output to 8000 Hz; input rate unchanged
-sox -r 16000 input.wav -r 8000 output.wav  # both specified explicitly
+sox -r 8000 test.wav out.wav   # override input's declared rate; output inherits 8000 Hz
+sox test.wav -r 8000 out.wav   # resample output to 8000 Hz; input rate unchanged
+sox -r 16000 test.wav -r 8000 out.wav  # both specified explicitly
 ```
 
 All three are valid and mean different things. Placing a flag in the
@@ -79,9 +79,9 @@ Effects go *after* the output filename. This surprises most people
 once and never again:
 
 ```bash
-sox input.wav output.wav trim 5 10 reverse
+sox test.wav out.wav trim 5 10 reverse
 #                         ──────────────── Zone 4
-play output.wav
+play out.wav
 ```
 
 Multiple effects are applied left to right: first `trim`, then
