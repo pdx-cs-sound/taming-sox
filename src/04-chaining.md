@@ -29,6 +29,7 @@ output filename:
 
 ```bash
 sox test.wav output.wav trim 5 10 fade q 1 0 1 norm -3
+play output.wav
 ```
 
 Sox converts the format *and* applies the effects in a single pass,
@@ -36,4 +37,5 @@ so trimming and converting to MP3 is one command:
 
 ```bash
 sox test.wav output.mp3 trim 0 30 norm -3
+play output.mp3
 ```

@@ -18,7 +18,9 @@ alter how it sounds:
 
 ```bash
 sox test.wav out.wav rate 22050    # downsample to 22050 Hz
+play out.wav
 sox test.wav out.wav rate 48000    # upsample to 48000 Hz
+play out.wav
 ```
 
 This is equivalent to writing `-r 22050 out.wav` as a Zone 3 format

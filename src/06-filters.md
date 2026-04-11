@@ -9,6 +9,7 @@ filters produce an audible and visible change. Generate some:
 
 ```bash
 sox -n noise.wav synth 5 pinknoise gain -6
+play noise.wav
 ```
 
 ## highpass and lowpass
@@ -67,6 +68,7 @@ sox raw_voice.wav clean.wav \
     highpass 100 \
     equalizer 3000 500 2 \
     norm -3
+play clean.wav
 ```
 
 Removes low-frequency noise, adds a little presence, normalizes.

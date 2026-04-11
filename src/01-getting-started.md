@@ -6,6 +6,7 @@ We need audio to work with. This command generates it:
 
 ```bash
 sox -n test.wav synth 10 sine 440 gain -6
+play test.wav
 ```
 
 That produces a 10-second 440 Hz sine wave at −6 dB (half amplitude),

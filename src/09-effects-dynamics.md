@@ -11,6 +11,7 @@
 sox -n _loud.wav synth 2 sawtooth 220 gain -6
 sox -n _quiet.wav synth 2 sawtooth 220 gain -20
 sox _loud.wav _quiet.wav _loud.wav dynamics.wav
+play dynamics.wav
 ```
 
 ## reverb
@@ -71,6 +72,7 @@ with `pad`, which adds silence (in seconds) to the start and end:
 
 ```bash
 sox -n padded.wav synth 5 sawtooth 220 gain -6 pad 1 1
+play padded.wav
 ```
 
 Remove leading and trailing silence:
@@ -112,4 +114,5 @@ sox dynamics.wav podcast.wav \
     highpass 80 \
     compand 0.3,1 6:-70,-60,-20 -5 -90 0.2 \
     norm -3
+play podcast.wav
 ```

@@ -33,6 +33,7 @@ conversions: −6 dB ≈ `0.5`, −12 dB ≈ `0.25`, −20 dB = `0.1`.
 
 ```bash
 sox -v 0.8 a.wav -t raw -r 48000 -b 32 -c 1 -e signed-integer -v 0.5 b.raw out.wav
+play out.wav
 ```
 
 ## Concatenation — A then B
@@ -41,6 +42,7 @@ List multiple inputs before the output:
 
 ```bash
 sox a.wav b.wav combined.wav
+play combined.wav
 ```
 
 Files must have compatible sample rates and channel counts. If rates
@@ -50,6 +52,7 @@ For a smooth crossfade at the join, use the `splice` effect:
 
 ```bash
 sox a.wav b.wav out.wav splice 3    # crossfade at the 3-second mark
+play out.wav
 ```
 
 ## Mixing — A over B
@@ -80,6 +83,7 @@ become one stereo file:
 
 ```bash
 sox -M left.wav right.wav stereo.wav
+play stereo.wav
 ```
 
 ## remix — channel routing

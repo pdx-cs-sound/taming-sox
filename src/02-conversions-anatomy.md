@@ -81,6 +81,7 @@ once and never again:
 ```bash
 sox input.wav output.wav trim 5 10 reverse
 #                         ──────────────── Zone 4
+play output.wav
 ```
 
 Multiple effects are applied left to right: first `trim`, then
