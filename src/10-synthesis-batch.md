@@ -46,8 +46,8 @@ play -n synth 2 sine 261.63 sine 329.63 sine 392.00 gain -6
 ### Specifying output format
 
 The output format follows your system's default audio configuration,
-which may not be what you want. Specify it explicitly with format
-flags before `-n`:
+which may not be what you want. Specify it explicitly with Zone 3
+format flags between `-n` and the output filename:
 
 ```bash
 sox -n -r 44100 -b 16 -c 1 out.wav synth 3 sine 440

@@ -63,8 +63,8 @@ A format flag describes the *next* filename in the command — input
 or output, depending on where you place it:
 
 ```bash
-sox -r 8000 input.wav output.wav   # input is 8000 Hz; output rate unchanged
-sox input.wav -r 8000 output.wav   # output is resampled to 8000 Hz; input rate unchanged
+sox -r 8000 input.wav output.wav   # override input's declared rate; output inherits 8000 Hz
+sox input.wav -r 8000 output.wav   # resample output to 8000 Hz; input rate unchanged
 sox -r 16000 input.wav -r 8000 output.wav  # both specified explicitly
 ```
 

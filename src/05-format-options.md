@@ -72,5 +72,5 @@ emits sox's own internal format, which avoids specifying all those
 flags manually:
 
 ```bash
-sox input.wav -p trim 10 | sox - output.wav norm -3
+sox test.wav -p trim 0 5 | sox - output.wav norm -3
 ```

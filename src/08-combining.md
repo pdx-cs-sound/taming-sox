@@ -13,7 +13,9 @@
 ```bash
 sox -n a.wav synth 3 sine 440 gain -6
 sox -n b.wav synth 3 sine 660 gain -6
-# use the downloaded music.wav and voice.wav directly
+# normalise samples to a common format for mixing
+sox samples/music.wav -c 1 -r 44100 music.wav
+sox samples/voice.wav -r 44100 voice.wav
 ```
 
 ## Per-input Zone 2 flags
@@ -46,8 +48,8 @@ sox a.wav b.wav combined.wav
 play combined.wav
 ```
 
-Files must have compatible sample rates and channel counts. If rates
-differ, sox resamples to match the first file.
+Files must have identical sample rates and channel counts — sox
+hard-fails if they differ. Use `rate` to resample first if needed.
 
 For a smooth crossfade at the join, use the `splice` effect:
 

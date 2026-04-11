@@ -105,7 +105,7 @@ Breaking that down:
 
 - `0.3,1` — attack 0.3 s, decay 1 s
 - `6:-70,-60,-20` — transfer function: input/output dB pairs
-- `-5` — output gain offset
+- `-5` — output gain offset (reduce if sox warns about clipping)
 - `-90` — initial signal level
 - `0.2` — delay before processing
 
