@@ -6,13 +6,13 @@
 **Artist:** Koi-discovery  
 **Album:** Ante-Chrysalide  
 **Source:** [freemusicarchive.org](https://freemusicarchive.org/music/koi-discovery/ante-chrysalide/erase-datamp3/)  
-**License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
+**License:** [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
 
 Clip: 10 seconds starting at 0:08.
 
 ## voice.wav
 
 **Author:** bart (repository author)  
-**License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
+**License:** [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
 
 Converted from 8-bit to 16-bit on ingest.
