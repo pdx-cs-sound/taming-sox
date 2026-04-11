@@ -6,6 +6,7 @@
 <a href="samples/music.wav" download>⬇ music.wav</a> — "Erase Data" by Koi-discovery (CC0)
 
 **Setup:**
+
 ```bash
 # Varying dynamics for compand: loud / quiet / loud
 sox -n _loud.wav synth 2 sawtooth 220 gain -6
@@ -101,6 +102,7 @@ play dynamics.wav compand 0.3,1 6:-70,-60,-20 -5 -90 0.2
 ```
 
 Breaking that down:
+
 - `0.3,1` — attack 0.3 s, decay 1 s
 - `6:-70,-60,-20` — transfer function: input/output dB pairs
 - `-5` — output gain offset

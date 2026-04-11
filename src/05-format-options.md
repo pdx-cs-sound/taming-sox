@@ -9,7 +9,7 @@ Put them in the wrong zone and they apply to the wrong file.
 ## The four core flags
 
 | Flag | Meaning | Example |
-|------|---------|---------|
+| --- | --- | --- |
 | `-r` | sample rate (Hz) | `-r 44100` |
 | `-b` | bit depth | `-b 16` |
 | `-c` | channels | `-c 1` (mono), `-c 2` (stereo) |

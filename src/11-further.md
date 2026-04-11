@@ -52,7 +52,7 @@ a C API. The header is `sox.h`; the source ships with examples.
 
 Knowing what sox is *not* good at saves time:
 
-- **No phase vocoder.** WSOLA works well but produces artefacts on
+- **No phase vocoder.** WSOLA works well but produces artifacts on
   complex material; use Rubber Band (chapter 7) when quality matters.
 - **No multitrack routing.** Sox processes one stream at a time.
   For independent tracks with sends and returns, look at `ecasound`

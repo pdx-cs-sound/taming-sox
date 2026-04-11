@@ -43,7 +43,7 @@ Three arguments: center frequency, width, gain in dB. Width units
 are controlled by a suffix:
 
 | Suffix | Unit | Example |
-|--------|------|---------|
+| --- | --- | --- |
 | none | Hz | `200` = 200 Hz wide |
 | `q` | Q factor | `2q` = Q of 2 |
 | `o` | octaves | `1o` = one octave wide |

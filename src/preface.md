@@ -1,6 +1,6 @@
 # Taming sox
 
-*Bart Massey and Claude Code*
+by Bart Massey and Claude Code
 
 ---
 

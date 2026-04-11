@@ -21,7 +21,7 @@ for now treat it as a recipe.
 soxi test.wav
 ```
 
-```
+```text
 Input File     : 'test.wav'
 Channels       : 1
 Sample Rate    : 48000

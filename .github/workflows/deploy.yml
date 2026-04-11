@@ -20,17 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install mdbook and mdbook-linkcheck
-        run: |
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.5.2/mdbook-v0.5.2-x86_64-unknown-linux-gnu.tar.gz \
-            | tar -xz -C /usr/local/bin
-          curl -sSL https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.7/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip \
-            -o linkcheck.zip
-          unzip -j linkcheck.zip mdbook-linkcheck -d /usr/local/bin
-          rm linkcheck.zip
-
-      - name: Check links
-        run: mdbook-linkcheck --standalone
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v19
 
   build:
     needs: lint

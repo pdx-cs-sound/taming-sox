@@ -3,7 +3,7 @@
 Four effects; two axes:
 
 | Effect | Changes speed? | Changes pitch? | Notes |
-|--------|:--------------:|:--------------:|-------|
+| --- | :---: | :---: | --- |
 | `rate` | no | no | proper resampler; changes sample rate only |
 | `speed` | yes | yes | varispeed tape |
 | `tempo` | yes | no | time-stretch, pitch preserved |
@@ -54,7 +54,7 @@ Three presets tune the algorithm for different material:
 ```bash
 play test.wav tempo -m 1.2   # music (default)
 play test.wav tempo -s 0.75  # speech
-play test.wav tempo -l 1.1   # linear (least CPU, more artefacts)
+play test.wav tempo -l 1.1   # linear (least CPU, more artifacts)
 ```
 
 ## pitch — pitch-shift only
@@ -77,7 +77,7 @@ can pass the same `segment search overlap` tuning parameters if needed.
 Sox also has `stretch`, which uses basic Overlap-Add rather than
 WSOLA. OLA chops audio into fixed-position windows and crossfades
 them; WSOLA adds a cross-correlation search to find where waveforms
-align before overlapping, avoiding phase cancellation artefacts.
+align before overlapping, avoiding phase cancellation artifacts.
 `stretch` is faster and can occasionally outperform `tempo` for
 factors very close to 1.0, where the fixed-position error is small
 enough not to matter. For anything else, prefer `tempo`.
@@ -101,7 +101,7 @@ play test.wav tempo 1.2 pitch -400   # faster but lower
 
 Sox has no phase vocoder implementation. For higher-quality
 time-stretching and pitch-shifting — particularly on music or when
-WSOLA artefacts are noticeable — `rubberband` is the standard tool
+WSOLA artifacts are noticeable — `rubberband` is the standard tool
 (see the [Rubber Band website](https://breakfastquay.com/rubberband/) for installation).
 
 ```bash
