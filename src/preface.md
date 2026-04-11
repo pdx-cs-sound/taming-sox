@@ -1,4 +1,4 @@
-# Taming sox
+# Introduction
 
 Sox is a command-line audio Swiss Army knife: it converts formats,
 applies DSP effects, mixes files, generates tones, and slots cleanly
@@ -7,6 +7,8 @@ into shell pipelines. Its CLI is genuinely strange — effects come
 can silently mean something completely different. This tutorial
 introduces those quirks in an order that makes them feel inevitable
 rather than arbitrary.
+
+**Authors:** Bart Massey and Claude Code.
 
 **What you need:** sox installed (`apt install sox libsox-fmt-all`
 on Debian/Ubuntu; `brew install sox` on macOS). No audio files

@@ -1,5 +1,6 @@
 [book]
 title = "Taming sox"
+authors = ["Bart Massey", "Claude Code"]
 language = "en"
 src = "src"
 
