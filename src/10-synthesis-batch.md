@@ -125,7 +125,7 @@ The `-p` flag emits sox's internal format on stdout — no need to
 specify sample rate, bit depth, or encoding on the receiving end:
 
 ```bash
-sox input.wav -p trim 10 20 | sox - reverb 80 output.wav
+sox voice.wav -p trim 0 3 | play - reverb 80
 ```
 
 This avoids intermediate files in multi-step pipelines.
