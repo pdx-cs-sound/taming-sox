@@ -64,7 +64,7 @@ play noise.wav equalizer 3000 1o 3      # boost 3 dB at 3 kHz, one octave wide
 ## A practical voice cleanup chain
 
 ```bash
-sox raw_voice.wav clean.wav \
+sox voice.wav clean.wav \
     highpass 100 \
     equalizer 3000 500 2 \
     norm -3
