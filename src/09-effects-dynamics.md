@@ -7,8 +7,6 @@
 
 **Setup:**
 ```bash
-cp music.wav source.wav   # use the downloaded music.wav
-
 # Varying dynamics for compand: loud / quiet / loud
 sox -n _loud.wav synth 2 sawtooth 220 gain -6
 sox -n _quiet.wav synth 2 sawtooth 220 gain -20
@@ -21,14 +19,14 @@ Simulates room acoustics. Arguments: reverberance (0–100),
 HF damping (0–100), room scale (0–100). Defaults are reasonable.
 
 ```bash
-play source.wav reverb
-play source.wav reverb 80 50 100    # large, bright room
+play music.wav reverb
+play music.wav reverb 80 50 100    # large, bright room
 ```
 
 `--wet-only` removes the dry signal, leaving only the wet (reverberated) signal:
 
 ```bash
-play source.wav reverb --wet-only 80
+play music.wav reverb --wet-only 80
 ```
 
 > **Note:** `reverb` does not extend the output file. The reverb
@@ -36,7 +34,7 @@ play source.wav reverb --wet-only 80
 > pad silence onto the end of the input first:
 >
 > ```bash
-> play source.wav pad 0 2 reverb 80
+> play music.wav pad 0 2 reverb 80
 > ```
 
 ## echo
@@ -45,7 +43,7 @@ Discrete repeating delays. Arguments: `gain-in gain-out`, then one
 or more `delay(ms) decay` pairs.
 
 ```bash
-play source.wav echo 0.8 0.7 500 0.4
+play music.wav echo 0.8 0.7 500 0.4
 #                    ──── ────  ─────── ────
 #                    in  out   500ms   0.4 decay
 ```
@@ -53,14 +51,14 @@ play source.wav echo 0.8 0.7 500 0.4
 Two taps:
 
 ```bash
-play source.wav echo 0.8 0.7 500 0.4 700 0.3
+play music.wav echo 0.8 0.7 500 0.4 700 0.3
 ```
 
 ## chorus and flanger
 
 ```bash
-play source.wav chorus 0.6 0.9 55 0.4 0.25 2 -s
-play source.wav flanger
+play music.wav chorus 0.6 0.9 55 0.4 0.25 2 -s
+play music.wav flanger
 ```
 
 Both have complex parameter lists — the defaults are a reasonable
