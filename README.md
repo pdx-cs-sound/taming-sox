@@ -43,3 +43,10 @@ brew install sox                 # macOS
 ```
 
 mdbook: <https://rust-lang.github.io/mdBook/guide/installation.html>
+
+## License
+
+This work is licensed under
+[Creative Commons Attribution 4.0 International (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+You are free to share and adapt it for any purpose, provided you
+give appropriate credit.
