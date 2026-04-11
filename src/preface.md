@@ -16,4 +16,4 @@ rather than arbitrary.
 
 **What you need:** sox installed — see the
 [SoX documentation](https://sox.sourceforge.net/) for your platform.
-No audio files required — we generate test tones as we go.
+Sample audio files are provided; test tones are generated as we go.
