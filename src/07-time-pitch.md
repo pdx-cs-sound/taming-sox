@@ -100,7 +100,7 @@ play test.wav tempo 1.2 pitch -400   # faster but lower
 Sox has no phase vocoder implementation. For higher-quality
 time-stretching and pitch-shifting — particularly on music or when
 WSOLA artefacts are noticeable — `rubberband` is the standard tool
-(`apt install rubberband-cli`).
+(see the [Rubber Band website](https://breakfastquay.com/rubberband/) for installation).
 
 ```bash
 rubberband --tempo 1.2 input.wav output.wav   # 20% faster (same sense as sox tempo)
