@@ -114,5 +114,4 @@ sox dynamics.wav podcast.wav \
     highpass 80 \
     compand 0.3,1 6:-70,-60,-20 -5 -90 0.2 \
     norm -3
-play podcast.wav
 ```

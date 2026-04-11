@@ -6,24 +6,24 @@
 `synth` tells sox what to generate.
 
 ```bash
-sox -n out.wav synth duration waveform frequency
+play -n synth duration waveform frequency
 ```
 
 ### Waveforms
 
 ```bash
-sox -n sine.wav     synth 3 sine     440  && play sine.wav
-sox -n square.wav   synth 3 square   440  && play square.wav
-sox -n triangle.wav synth 3 triangle 440  && play triangle.wav
-sox -n sawtooth.wav synth 3 sawtooth 440  && play sawtooth.wav
+play -n synth 3 sine     440
+play -n synth 3 square   440
+play -n synth 3 triangle 440
+play -n synth 3 sawtooth 440
 ```
 
 ### Noise
 
 ```bash
-sox -n white.wav synth 5 whitenoise  && play white.wav
-sox -n pink.wav  synth 5 pinknoise   && play pink.wav
-sox -n brown.wav synth 5 brownnoise  && play brown.wav
+play -n synth 5 whitenoise
+play -n synth 5 pinknoise
+play -n synth 5 brownnoise
 ```
 
 ### Sweeps
@@ -31,8 +31,7 @@ sox -n brown.wav synth 5 brownnoise  && play brown.wav
 Specify frequency as a range to sweep:
 
 ```bash
-sox -n sweep.wav synth 5 sine 100:8000    # 100 Hz → 8 kHz over 5s
-play sweep.wav
+play -n synth 5 sine 100:8000    # 100 Hz → 8 kHz over 5s
 ```
 
 ### Chords
@@ -41,8 +40,7 @@ Multiple waveforms on one `synth` generate simultaneously:
 
 ```bash
 # C major: C4, E4, G4
-sox -n cmajor.wav synth 2 sine 261.63 sine 329.63 sine 392.00 gain -6
-play cmajor.wav
+play -n synth 2 sine 261.63 sine 329.63 sine 392.00 gain -6
 ```
 
 ### Specifying output format
@@ -53,17 +51,15 @@ flags before `-n`:
 
 ```bash
 sox -n -r 44100 -b 16 -c 1 out.wav synth 3 sine 440
-play out.wav
 ```
 
-### Real-time synthesis with play
+### Adding effects
+
+`play -n synth` accepts a full effects chain:
 
 ```bash
-play -n synth 3 sine 440
 play -n synth 10 sine 440 reverb 80
 ```
-
-No files involved at all.
 
 ---
 
