@@ -19,6 +19,14 @@ rather than arbitrary.
 The source for this book is available at
 <https://github.com/pdx-cs-sound/taming-sox>.
 
+**What this book covers.** Sox has many more effects than any one
+tutorial can reasonably teach. The approach here: show the arguments
+that teach concepts — the `q`/`t`/`h`/`l` shapes in `fade`, the
+Q/Hz/octaves units in `equalizer`, the transfer-function syntax in
+`compand`. For arguments that just tune existing behavior, the sox
+man page is the right reference. When an effect is mentioned only in
+passing, that's why.
+
 **What you need:** sox installed — see the
 [SoX documentation](https://sox.sourceforge.net/) for your platform.
 Sample audio files are provided; test tones are generated as we go.
