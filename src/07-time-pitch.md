@@ -90,4 +90,4 @@ play test.wav tempo 1.2 pitch -400   # faster but lower
 Sox has no phase vocoder. When quality matters — especially for
 time-stretching, pitch-shifting, or formant-preserved vocal shifts —
 [`rubberband`](https://breakfastquay.com/rubberband/) is the standard
-tool. Chapter 12 covers how to reach for it.
+tool. Further Reading covers how to reach for it.
