@@ -87,37 +87,7 @@ play test.wav tempo 1.2 pitch -400   # faster but lower
 
 ## See also: Rubber Band
 
-Sox has no phase vocoder implementation. For higher-quality
-time-stretching, pitch-shifting, or near-unity resampling (where
-sox's anti-aliasing filter does more damage than the rate change
-warrants) — `rubberband` is the standard tool
-(see the [Rubber Band website](https://breakfastquay.com/rubberband/) for installation).
-
-```bash
-rubberband --tempo 1.2 input.wav output.wav   # 20% faster (same sense as sox tempo)
-rubberband --time 0.8 input.wav output.wav    # 0.8x duration (--time is 1/--tempo)
-rubberband --pitch 2 input.wav output.wav     # up 2 semitones (not cents)
-rubberband --pitch -2 --tempo 1.1 input.wav output.wav  # combine freely
-```
-
-Rubberband has two engines: R2 (default, fast, WSOLA-based) and R3
-(slower, phase vocoder, noticeably better on music):
-
-```bash
-rubberband --fine --pitch 4 input.wav output.wav   # R3 engine
-rubberband-r3 --pitch 4 input.wav output.wav       # equivalent
-```
-
-For vocal pitch-shifting, `--formant` preserves the formant
-structure so voices don't sound cartoonish:
-
-```bash
-rubberband --fine --formant --pitch 3 voice.wav output.wav
-```
-
-Rubberband does not support stdout, so combine with sox via a temp
-file for format conversion:
-
-```bash
-rubberband -q --pitch 2 input.wav tmp.wav && sox tmp.wav output.flac
-```
+Sox has no phase vocoder. When quality matters — especially for
+time-stretching, pitch-shifting, or formant-preserved vocal shifts —
+[`rubberband`](https://breakfastquay.com/rubberband/) is the standard
+tool. Chapter 12 covers how to reach for it.
