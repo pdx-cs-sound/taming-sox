@@ -8,16 +8,31 @@ Put them in the wrong section and they apply to the wrong file.
 
 ## The four core flags
 
+These describe the audio itself. Sox will resample, convert, or
+remix as needed to meet them.
+
 | Flag | Meaning | Example |
 | --- | --- | --- |
 | `-r` | sample rate (Hz) | `-r 44100` |
 | `-b` | bit depth | `-b 16` |
 | `-c` | channels | `-c 1` (mono), `-c 2` (stereo) |
 | `-e` | encoding | `-e signed-integer` |
-| `-t` | file type | `-t raw`, `-t wav` |
 
 Common encodings: `signed-integer`, `unsigned-integer`,
 `floating-point`, `a-law`, `u-law`.
+
+## The file type flag
+
+`-t` is different: it names the container format (WAV, AIFF, FLAC,
+raw, and so on) rather than a property of the audio. Sox normally
+infers it from the filename extension, so you rarely set it. Reach
+for `-t` only when there's no extension to read (pipes with `-`,
+headerless raw files) or the extension lies about the content.
+
+```bash
+-t raw      # headerless PCM
+-t wav      # force WAV regardless of extension
+```
 
 ## Resampling
 

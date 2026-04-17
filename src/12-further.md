@@ -1,4 +1,4 @@
-# Further Reading
+# Beyond sox
 
 ## The manual
 
@@ -42,7 +42,7 @@ ffmpeg -i video.mp4 -vn audio.wav
 sox audio.wav processed.wav highpass 100 norm -3
 ```
 
-## When sox isn't enough: Rubber Band
+## Rubber Band: high-quality time-stretching and pitch-shifting
 
 Sox has no phase vocoder. WSOLA (`tempo`, `pitch`) is fast and
 reasonable, but on complex music you can hear it working. For
@@ -84,4 +84,18 @@ rubberband -q --pitch 2 input.wav tmp.wav && sox tmp.wav output.flac
 Sox is also a C library. If you need to embed audio processing in a
 program, `libsox` exposes the full effect chain and format I/O via
 a C API. The header is `sox.h`; the source ships with examples.
+
+## What sox isn't
+
+Sox is a Swiss Army knife, but some problems aren't shaped like a
+knife. Knowing what sox is *not* good at saves time:
+
+- **No phase vocoder.** WSOLA (`tempo`, `pitch`) works well but
+  produces artifacts on complex material; use Rubber Band (above)
+  when quality matters.
+- **No multitrack routing.** Sox processes one stream at a time.
+  For independent tracks with sends and returns, look at `ecasound`
+  or a DAW.
+- **No streaming protocols.** Sox reads and writes files and pipes;
+  it has no RTSP, HLS, or WebRTC support.
 

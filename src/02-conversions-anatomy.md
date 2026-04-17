@@ -80,7 +80,7 @@ once and never again:
 
 ```bash
 sox test.wav out.wav trim 5 10 reverse
-#                         ──────────────── effects
+#                    ───────────────── effects
 play out.wav
 ```
 

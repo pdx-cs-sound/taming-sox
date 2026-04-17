@@ -2,6 +2,8 @@
 
 *Bart Massey and Claude Code*
 
+Source: <https://github.com/pdx-cs-sound/taming-sox>.
+
 Licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
@@ -16,9 +18,6 @@ can silently mean something completely different. This tutorial
 introduces those quirks in an order that makes them feel inevitable
 rather than arbitrary.
 
-The source for this book is available at
-<https://github.com/pdx-cs-sound/taming-sox>.
-
 **What this book covers.** Sox has many more effects than any one
 tutorial can reasonably teach. The approach here: show the arguments
 that teach concepts — the `q`/`t`/`h`/`l` shapes in `fade`, the
@@ -27,9 +26,9 @@ Q/Hz/octaves units in `equalizer`, the transfer-function syntax in
 man page is the right reference. When an effect is mentioned only in
 passing, that's why.
 
-Sox has real limits — they're collected in the last chapter if you
-want to check whether it fits your problem before investing in
-learning it.
+Sox has real limits — they're collected at the end of the last
+chapter if you want to check whether it fits your problem before
+investing in learning it.
 
 Sample audio files are provided; test tones are generated as we go.
 
