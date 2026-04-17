@@ -26,16 +26,8 @@ The telephone band example is a good one to listen to: the
 characteristic "tinny phone" sound comes entirely from cutting the
 low and high ends.
 
-## bass and treble
-
-Shelving filters: boost or cut below/above a crossover point.
-Argument is in dB.
-
-```bash
-play noise.wav bass 3      # boost bass by 3 dB
-play noise.wav treble -6   # cut treble by 6 dB
-play noise.wav bass 2 treble -2
-```
+`bass` and `treble` are shelving variants of `equalizer` — convenient
+when you just want to lift or cut one end. See `man sox` for arguments.
 
 ## equalizer — parametric EQ
 

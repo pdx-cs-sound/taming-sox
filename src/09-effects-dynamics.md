@@ -39,33 +39,6 @@ play music.wav reverb --wet-only 80
 > play music.wav pad 0 2 reverb 80
 > ```
 
-## echo
-
-Discrete repeating delays. Arguments: `gain-in gain-out`, then one
-or more `delay(ms) decay` pairs.
-
-```bash
-play music.wav echo 0.8 0.7 500 0.4
-#                    ──── ────  ─────── ────
-#                    in  out   500ms   0.4 decay
-```
-
-Two taps:
-
-```bash
-play music.wav echo 0.8 0.7 500 0.4 700 0.3
-```
-
-## chorus and flanger
-
-```bash
-play music.wav chorus 0.6 0.9 55 0.4 0.25 2 -s
-play music.wav flanger
-```
-
-Both have complex parameter lists — the defaults are a reasonable
-starting point; see `man sox` for tuning.
-
 ## silence — trim silence
 
 These effects need a file that actually has silence. Generate one
@@ -117,3 +90,9 @@ sox dynamics.wav podcast.wav \
     compand 0.3,1 6:-70,-60,-20 -5 -90 0.2 \
     norm -3
 ```
+
+## Other time-based effects
+
+Sox also provides `echo` (discrete delays), `chorus`, and `flanger`.
+Their defaults are reasonable starting points; `man sox` covers the
+tuning parameters.
