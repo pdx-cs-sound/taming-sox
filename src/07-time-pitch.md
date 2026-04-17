@@ -77,23 +77,6 @@ direction, so the duration cancels out and only the pitch shift
 remains. The `-m/-s/-l` presets are not exposed on `pitch`, but you
 can pass the same `segment search overlap` tuning parameters if needed.
 
-## stretch — OLA (occasionally useful)
-
-Sox also has `stretch`, which uses basic Overlap-Add rather than
-WSOLA. OLA chops audio into fixed-position windows and crossfades
-them; WSOLA adds a cross-correlation search to find where waveforms
-align before overlapping, avoiding phase cancellation artifacts.
-`stretch` is faster and can occasionally outperform `tempo` for
-factors very close to 1.0, where the fixed-position error is small
-enough not to matter. For anything else, prefer `tempo`.
-
-```bash
-play test.wav stretch 1.2   # time-stretch by factor (>1 = longer)
-```
-
-Note that `stretch`'s factor is the opposite sense to `tempo`: `1.2`
-means 20% longer, where `tempo 1.2` means 20% faster.
-
 ## Combining them
 
 `tempo` and `pitch` are independent effects applied in sequence:
