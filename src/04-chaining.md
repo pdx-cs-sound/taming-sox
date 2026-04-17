@@ -1,7 +1,7 @@
 # Chaining Effects
 
-Effects in Zone 4 are applied strictly left to right. The output of
-one effect becomes the input to the next.
+Effects in the effects chain are applied strictly left to right. The
+output of one effect becomes the input to the next.
 
 ```bash
 play test.wav trim 5 10 fade q 1 0 1 norm -3

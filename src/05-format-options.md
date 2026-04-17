@@ -4,7 +4,7 @@ Sox detects format from file extensions. When that isn't possible —
 raw PCM files, pipes, unusual encodings — you provide it explicitly.
 
 Recall from chapter 2: format flags describe the *next* filename.
-Put them in the wrong zone and they apply to the wrong file.
+Put them in the wrong section and they apply to the wrong file.
 
 ## The four core flags
 

@@ -18,16 +18,16 @@ sox samples/music.wav -c 1 -r 44100 music.wav
 sox samples/voice.wav -r 44100 voice.wav
 ```
 
-## Per-input Zone 2 flags
+## Per-input format flags
 
-With multiple inputs, Zone 2 format flags repeat independently for
-each input file — place them immediately before the file they describe:
+With multiple inputs, input-section format flags repeat independently
+for each input file — place them immediately before the file they describe:
 
 ```bash
-sox [Zone2a] infile_a [Zone2b] infile_b [Zone3] outfile [Zone4]
+sox [input-a] infile_a [input-b] infile_b [output] outfile [effects]
 ```
 
-Any Zone 2 flag works this way: `-v`, `-r`, `-b`, `-c`, `-t`, `-e`.
+Any input flag works this way: `-v`, `-r`, `-b`, `-c`, `-t`, `-e`.
 The most common use is `-v` for per-input volume (shown below), and
 format flags when combining files of different types or encodings.
 
@@ -60,7 +60,7 @@ play out.wav
 
 ## Mixing — A over B
 
-The `-m` flag (Zone 1) sums inputs together rather than concatenating:
+The `-m` global flag sums inputs together rather than concatenating:
 
 ```bash
 play -m music.wav voice.wav

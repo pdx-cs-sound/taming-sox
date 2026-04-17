@@ -46,7 +46,7 @@ play -n synth 2 sine 261.63 sine 329.63 sine 392.00 gain -6
 ### Specifying output format
 
 The output format follows your system's default audio configuration,
-which may not be what you want. Specify it explicitly with Zone 3
+which may not be what you want. Specify it explicitly with output
 format flags between `-n` and the output filename:
 
 ```bash

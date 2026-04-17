@@ -26,30 +26,30 @@ Every sox command follows this structure:
 ```text
 sox  [global opts]  [input opts]  infile(s)  [output opts]  outfile  [effects...]
      ────────────   ──────────────────────   ────────────────────    ──────────
-     Zone 1         Zone 2                   Zone 3                  Zone 4
+     globals        input                    output                  effects
 ```
 
-- **Zone 1** — global options affecting the whole run (`-V`, `--buffer`, ...)
-- **Zone 2** — format options for the input(s), placed *immediately before* the filename
-- **Zone 3** — the output file, with its own optional format options before it
-- **Zone 4** — the effects chain, applied left to right
+- **globals** — options affecting the whole run (`-V`, `--buffer`, ...)
+- **input** — format options for the input(s), placed *immediately before* the filename
+- **output** — the output file, with its own optional format options before it
+- **effects** — the effects chain, applied left to right
 
-The `-v` flag from chapter 1 is a Zone 2 option: it scales the input
-amplitude as the file is read, before any effects run. The `vol`
-effect (chapter 3) does the same arithmetic but in Zone 4. These two
-commands produce identical output:
+The `-v` flag from chapter 1 lives in the input section: it scales the
+input amplitude as the file is read, before any effects run. The `vol`
+effect (chapter 3) does the same arithmetic but in the effects chain.
+These two commands produce identical output:
 
 ```bash
-sox -v 0.5 test.wav out.wav   # scale at input (Zone 2)
-sox test.wav out.wav vol 0.5  # scale in effects chain (Zone 4)
+sox -v 0.5 test.wav out.wav   # scale at input
+sox test.wav out.wav vol 0.5  # scale in effects chain
 ```
 
-`-v` is input-only — sox will reject it in Zone 3. To scale the
+`-v` is input-only — sox will reject it as an output flag. To scale the
 output, use `vol` or `gain` in the effects chain.
 
-**`play` and `rec`** are just sox with one zone missing. `play` has
-no Zone 3 (the speaker is implicit). `rec` has no Zone 2 (the
-microphone is implicit). Any effect chain you'd write after the
+**`play` and `rec`** are just sox with one section missing. `play` has
+no output section (the speaker is implicit). `rec` has no input section
+(the microphone is implicit). Any effect chain you'd write after the
 output filename in `sox` comes directly after the input in `play`:
 
 ```bash
@@ -69,18 +69,18 @@ sox -r 16000 test.wav -r 8000 out.wav  # both specified explicitly
 ```
 
 All three are valid and mean different things. Placing a flag in the
-wrong zone will silently produce a different result than you intended,
+wrong section will silently produce a different result than you intended,
 which is the most common source of bugs in sox commands. Format
 options are covered fully in chapter 5.
 
-### Zone 4: effects come last
+### Effects come last
 
 Effects go *after* the output filename. This surprises most people
 once and never again:
 
 ```bash
 sox test.wav out.wav trim 5 10 reverse
-#                         ──────────────── Zone 4
+#                         ──────────────── effects
 play out.wav
 ```
 

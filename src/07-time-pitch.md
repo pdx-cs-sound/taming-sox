@@ -23,7 +23,7 @@ sox test.wav out.wav rate 48000    # upsample to 48000 Hz
 play out.wav
 ```
 
-This is equivalent to writing `-r 22050 out.wav` as a Zone 3 format
+This is equivalent to writing `-r 22050 out.wav` as an output format
 flag, but as an explicit effect it fits naturally in a chain and
 gives access to quality options:
 
