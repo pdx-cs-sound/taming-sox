@@ -33,11 +33,24 @@ learning it.
 
 Sample audio files are provided; test tones are generated as we go.
 
+## sox and sox_ng
+
+Original sox stopped releasing in 2015. In 2024 a community fork,
+sox_ng, picked up active development. Most modern distros now ship
+sox_ng under the name `sox` — when this book says "sox," it means
+whichever binary you have. Everything here works on both. A handful
+of features in the later chapters are sox_ng 14.5+ only; those are
+called out where they come up.
+
+The title of this book stays *Taming sox* because the command is
+still `sox`. "sox_ng" only comes up when the fork itself is the
+subject.
+
 ## Getting sox
 
-Most modern distros ship `sox_ng` (the maintained fork) under the
-name `sox`. Some older stable releases still ship the 2015 legacy
-build. Homebrew and the BSDs vary.
+Most modern distros ship sox_ng under the name `sox`. Some older
+stable releases still ship the 2015 legacy build. Homebrew and the
+BSDs vary.
 
 Run `sox --version` to check. `SoX_ng` means you're set. `SoX 14.4.2`
 means you have the legacy build — everything in this book still works,

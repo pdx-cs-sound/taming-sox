@@ -67,3 +67,8 @@ play clean.wav
 ```
 
 Removes low-frequency noise, adds a little presence, normalizes.
+
+> **sox_ng 14.5+:** adds a FIR filter designed from frequency-response
+> knots — you specify points on the desired magnitude response and
+> sox builds the filter. Useful when neither a shelving nor a
+> parametric shape fits what you want. See `man sox`.

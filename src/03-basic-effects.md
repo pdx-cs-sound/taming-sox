@@ -54,6 +54,11 @@ play test.wav gain 6     # louder by 6 dB (can clip!)
 
 A rough guide: −6 dB ≈ half perceived loudness; +6 dB ≈ double.
 
+> **sox_ng 14.5+:** `vol` accepts a second argument that enables a
+> soft-clipping limiter so boosts don't hard-clip when they exceed
+> 0 dBFS. See `man sox` for the exact argument. On legacy sox, `vol 2`
+> clips; on sox_ng with the limiter, it shapes the peak instead.
+
 ## norm — automatic normalization
 
 `norm` brings the peak sample to a target level (default 0 dBFS):
