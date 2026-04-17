@@ -27,6 +27,10 @@ Q/Hz/octaves units in `equalizer`, the transfer-function syntax in
 man page is the right reference. When an effect is mentioned only in
 passing, that's why.
 
+Sox has real limits — they're collected in the last chapter if you
+want to check whether it fits your problem before investing in
+learning it.
+
 **What you need:** sox installed — see the
 [SoX documentation](https://sox.sourceforge.net/) for your platform.
 Sample audio files are provided; test tones are generated as we go.

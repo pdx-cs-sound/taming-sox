@@ -14,3 +14,4 @@
 - [Synthesis](10-synthesis.md)
 - [Batch Processing](11-batch.md)
 - [Further Reading](12-further.md)
+- [What sox isn't](limitations.md)

@@ -85,14 +85,3 @@ Sox is also a C library. If you need to embed audio processing in a
 program, `libsox` exposes the full effect chain and format I/O via
 a C API. The header is `sox.h`; the source ships with examples.
 
-## Limitations
-
-Knowing what sox is *not* good at saves time:
-
-- **No phase vocoder.** WSOLA works well but produces artifacts on
-  complex material; use Rubber Band (covered above) when quality matters.
-- **No multitrack routing.** Sox processes one stream at a time.
-  For independent tracks with sends and returns, look at `ecasound`
-  or a DAW.
-- **No streaming protocols.** Sox reads and writes files and pipes;
-  it has no RTSP, HLS, or WebRTC support.
