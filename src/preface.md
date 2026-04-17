@@ -31,6 +31,19 @@ Sox has real limits — they're collected in the last chapter if you
 want to check whether it fits your problem before investing in
 learning it.
 
-**What you need:** sox installed — see the
-[SoX documentation](https://sox.sourceforge.net/) for your platform.
 Sample audio files are provided; test tones are generated as we go.
+
+## Getting sox
+
+Most modern distros ship `sox_ng` (the maintained fork) under the
+name `sox`. Some older stable releases still ship the 2015 legacy
+build. Homebrew and the BSDs vary.
+
+Run `sox --version` to check. `SoX_ng` means you're set. `SoX 14.4.2`
+means you have the legacy build — everything in this book still works,
+but you'll miss the sox_ng-flagged features later, and you'll be
+running an unmaintained binary.
+
+If your platform doesn't ship sox_ng and you want it, build from
+<https://codeberg.org/sox_ng/sox_ng>. Windows binaries are on the
+releases page.
