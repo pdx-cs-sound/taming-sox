@@ -13,5 +13,6 @@
 - [Effects and Dynamics](09-effects-dynamics.md)
 - [Synthesis](10-synthesis.md)
 - [Batch Processing](11-batch.md)
+- [Troubleshooting](troubleshooting.md)
 - [Further Reading](12-further.md)
 - [What sox isn't](limitations.md)
