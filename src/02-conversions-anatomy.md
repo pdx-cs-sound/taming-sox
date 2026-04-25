@@ -111,4 +111,4 @@ There are still two ways clipping can occur:
 
 Sox reports both as `WARN ... clipped N samples` on stderr,
 including for float output. Chapter 4 covers the chaining
-consequences; chapter 5 covers preserving headroom across pipes.
+consequences; chapter 6 covers preserving headroom across pipes.

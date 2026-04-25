@@ -56,7 +56,7 @@ Three new pieces, one sentence each: `-n` in the input position
 means "no input file — generate audio instead." `synth 10 sine 440`
 synthesizes ten seconds of a 440 Hz sine wave. `gain -6` knocks it
 down 6 dB (roughly half amplitude), which leaves headroom so later
-effects don't clip. Chapter 10 goes deeper on `synth`; this is all
+effects don't clip. Chapter 11 goes deeper on `synth`; this is all
 you need for now.
 
 ## Playing audio with play
