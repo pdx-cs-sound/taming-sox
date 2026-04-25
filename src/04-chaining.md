@@ -22,6 +22,28 @@ play test.wav gain 6 norm
 Neither is wrong — they just do different things. Think through the
 pipeline before you run it.
 
+## Headroom between effects
+
+As noted in chapter 2, the effect chain runs in 32-bit signed
+integers with 0 dBFS well below saturation, so samples can exceed
+full-scale between effects without clipping. `gain 6` followed by
+`norm` round-trips cleanly: the boost is preserved through the
+chain and `norm` scales it back before output.
+
+Clipping only happens at *boundaries* with a fixed-point format:
+
+- The output file. Writing 16- or 24-bit PCM clamps anything still
+  above 0 dBFS and prints `WARN ... clipped N samples`. Floating-
+  point output (`-e floating-point -b 32`) has no such ceiling and
+  passes out-of-range values through unchanged — but any *internal*
+  clipping at the int32 ceiling earlier in the chain is permanent
+  and shows up in the float output as distortion. See chapter 2.
+- A pipe between two sox processes, if the pipe format is bounded.
+  `sox a.wav -t wav - | sox - out.wav norm` clips at the 16-bit
+  WAV in the middle. Use `sox -p` (sox's native 32-bit format) or
+  a float WAV to preserve headroom across the pipe — see the
+  Piping section in the next chapter.
+
 ## Writing to a file
 
 When you're happy with the chain, swap `play` for `sox` and add an

@@ -115,3 +115,8 @@ flags manually:
 ```bash
 sox test.wav -p trim 0 5 | sox - output.wav norm -3
 ```
+
+`-p` also preserves headroom across the pipe — samples above 0
+dBFS survive into the second sox, where they can be scaled back
+without clipping. A 16-bit WAV in the middle would clamp them.
+See the headroom note in the previous chapter.

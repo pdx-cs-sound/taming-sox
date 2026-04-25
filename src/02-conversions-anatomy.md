@@ -86,3 +86,29 @@ play out.wav
 
 Multiple effects are applied left to right: first `trim`, then
 `reverse` on the trimmed result.
+
+## The internal sample format
+
+Inside a sox process, samples flow through the effect chain as
+**32-bit signed integers**, not floats. 0 dBFS sits well below
+the int32 ceiling, so intermediate results can exceed full-scale
+without clipping — `gain 6 norm` works precisely because of this.
+
+There are still two ways clipping can occur:
+
+- **Internal clipping.** If an effect produces a sample beyond
+  INT32_MAX, sox saturates it to INT32_MAX, increments a clip
+  counter, and the distortion is now baked into the chain — no
+  later effect can recover the original value. This requires a
+  large amount of gain (about 96 dB above 0 dBFS for 16-bit input)
+  but is possible with aggressive boosts.
+- **Output clipping.** Writing to a fixed-point format (16/24-bit
+  PCM) clamps anything above 0 dBFS at the output stage. Writing
+  to floating-point (`-e floating-point -b 32`) does not — float
+  can represent values above 1.0 — so out-of-range *output*
+  samples survive, though any *internal* clipping that already
+  happened earlier in the chain is still in the signal.
+
+Sox reports both as `WARN ... clipped N samples` on stderr,
+including for float output. Chapter 4 covers the chaining
+consequences; chapter 5 covers preserving headroom across pipes.

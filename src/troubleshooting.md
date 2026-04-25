@@ -20,26 +20,75 @@ Likely causes, in order:
 ## Clipping
 
 Clipping sounds like harsh distortion on loud passages — a kind of
-fuzzy crunch that tracks peaks rather than being continuous. Common
-causes:
+fuzzy crunch that tracks peaks rather than being continuous. The
+`WARN ... clipped N samples` message on stderr is sox telling you
+the same thing.
 
-- `gain N` after `norm`: `norm` lifts the peak to 0 dBFS, then `gain`
-  pushes above it. Reorder, or `norm -N` instead.
+### Diagnosing where it happened
+
+The warning by itself doesn't say *which* effect clipped. Re-run
+with `-V3` and sox prints per-effect statistics, including clip
+counts attributed to each effect in the chain:
+
+```bash
+sox -V3 in.wav out.wav highpass 100 gain 6 norm 2>&1 | grep -i clip
+```
+
+If one effect shows a non-zero clip count, that's your culprit. If
+the count appears only on the output writer, the chain itself is
+fine — you're just exceeding the output format's range and the
+fix is at the end (lower `norm` target, or float output).
+
+When `-V3` output is too noisy, bisect: remove effects from the
+end of the chain one at a time and re-run, until the warning
+disappears. The last effect you removed is the one pushing the
+signal over.
+
+### Common causes and fixes
+
+- `gain N` after `norm`: `norm` lifts the peak to 0 dBFS, then
+  `gain` pushes above it. Reorder, or use `norm -N`.
 - Mixing without headroom: `-m` sums inputs, so two full-scale
   signals clip immediately. Either `-v 0.5` each input or `norm -3`
   the result.
-- Upsampling a signal that was already at 0 dBFS — the interpolator's
-  ringing can exceed the original peak.
+- Upsampling a signal that was already at 0 dBFS — the
+  interpolator's ringing can exceed the original peak. Insert
+  `gain -3` before `rate`, or `norm -3` after.
+- A bounded format in the middle of a sox-to-sox pipe. Switch the
+  pipe to `-p` (sox's native int32) — see chapter 5.
+- Aggressive boosts hitting the int32 ceiling internally (chapter
+  2). Rare in normal use; if you see it, lower input level with
+  `-v 0.5` on the input side rather than chasing it later.
 
-Detect clipping with `stats`:
+Two useful prophylactics:
+
+- `gain -l N` applies `N` dB of gain through a simple limiter
+  instead of as straight amplification — it boosts without ever
+  clipping. Best for small-to-moderate boosts; aggressive limiting
+  audibly distorts.
+- The global `-G` flag (`sox -G in.wav out.wav ...`) automatically
+  inserts `gain -h` / `gain -r` pairs around the chain. The
+  attenuation is computed analytically, not by scanning the audio:
+  effects that know their worst-case gain (`rate`, `reverb`, the
+  biquad filters, `remix`, `dither`, ...) declare it, and `gain -h`
+  multiplies those together and attenuates by the inverse upfront,
+  with `gain -r` reclaiming any unused headroom at the end. This
+  is the right tool when filters or resampling might overshoot,
+  but it does *not* protect against `gain +N`, `vol`, or `norm` —
+  those don't participate in the protocol. Use `gain -l` for those.
+
+### Detecting clipping after the fact
+
+If the WARN is gone but you still hear distortion, check the
+output with `stats`:
 
 ```bash
 sox output.wav -n stats
 ```
 
 Watch the `Pk lev dB` line and the `Flat factor` / `Num samples`
-report for saturated counts. A non-zero `Flat factor` on output that
-shouldn't have any flat runs is a strong signal.
+report for saturated counts. A non-zero `Flat factor` on output
+that shouldn't have any flat runs is a strong signal.
 
 ## Format mismatch on concat or mix
 
