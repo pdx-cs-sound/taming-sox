@@ -73,6 +73,11 @@ play test.wav norm -3    # peak to -3 dBFS (safer headroom)
 
 To save the result: `sox test.wav out.wav norm -3`.
 
+Like `gain`, `norm` has to find the peak before it can scale, so
+it buffers the whole input in memory; large files are slow. There
+is no streaming alternative for true peak normalization — a
+limiter or compressor is the closest you'll get on a stream.
+
 ## stat — measure levels
 
 Use `-n` as the output to discard audio and just print statistics:
