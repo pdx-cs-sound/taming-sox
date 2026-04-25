@@ -34,9 +34,10 @@ sox  [global opts]  [input opts]  infile(s)  [output opts]  outfile  [effects...
 - **output** — the output file, with its own optional format options before it
 - **effects** — the effects chain, applied left to right
 
-The `-v` flag from chapter 1 lives in the input section: it scales the
-input amplitude as the file is read, before any effects run. The `vol`
-effect (chapter 3) does the same arithmetic but in the effects chain.
+The `-v` flag from [chapter 1](01-getting-started.md) lives in the
+input section: it scales the input amplitude as the file is read,
+before any effects run. The `vol` effect ([chapter 3](03-basic-effects.md))
+does the same arithmetic but in the effects chain.
 These two commands produce identical output:
 
 ```bash
@@ -71,7 +72,7 @@ sox -r 16000 test.wav -r 8000 out.wav  # both specified explicitly
 All three are valid and mean different things. Placing a flag in the
 wrong section will silently produce a different result than you intended,
 which is the most common source of bugs in sox commands. Format
-options are covered fully in chapter 5.
+options are covered fully in [chapter 5](05-formats.md).
 
 ### Effects come last
 
@@ -110,5 +111,6 @@ There are still two ways clipping can occur:
   happened earlier in the chain is still in the signal.
 
 Sox reports both as `WARN ... clipped N samples` on stderr,
-including for float output. Chapter 4 covers the chaining
-consequences; chapter 6 covers preserving headroom across pipes.
+including for float output. [Chapter 4](04-chaining.md) covers the
+chaining consequences; [chapter 6](06-format-conversions.md) covers
+preserving headroom across pipes.

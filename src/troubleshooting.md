@@ -14,7 +14,7 @@ Likely causes, in order:
   problem.
 - `-v` in the wrong section: `sox -v 0 input.wav out.wav` scales the
   input to zero, producing a silent file — no error. Check that `-v`
-  belongs where you put it (see chapter 2).
+  belongs where you put it (see [chapter 2](02-conversions-anatomy.md)).
 - System volume muted at the OS level — check that independently.
 
 ## Clipping
@@ -55,7 +55,7 @@ signal over.
   interpolator's ringing can exceed the original peak. Insert
   `gain -3` before `rate`, or `norm -3` after.
 - A bounded format in the middle of a sox-to-sox pipe. Switch the
-  pipe to `-p` (sox's native int32) — see chapter 6.
+  pipe to `-p` (sox's native int32) — see [chapter 6](06-format-conversions.md).
 - Aggressive boosts hitting the int32 ceiling internally (chapter
   2). Rare in normal use; if you see it, lower input level with
   `-v 0.5` on the input side rather than chasing it later.

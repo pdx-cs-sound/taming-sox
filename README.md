@@ -25,19 +25,8 @@ Output goes to `book/`.
 
 ## Contents
 
-1. Getting Started — `sox --version`, `soxi`, `play`, `rec`, test tone recipe
-2. Conversions and Anatomy — format detection, the globals/input/output/effects model
-3. Basic Effects — `trim`, `reverse`, `fade`, `vol`, `gain`, `norm`
-4. Chaining Effects — left-to-right pipelines, auditioning with `play`
-5. Format Options — `-r`, `-b`, `-c`, `-e`, fully-specified output, raw PCM, piping
-6. Filters — `highpass`, `lowpass`, `equalizer`
-7. Time and Pitch — `rate`, `speed`, `tempo`, `pitch`
-8. Combining Files — concatenation, mixing (`-m`), merging (`-M`), `remix`
-9. Effects and Dynamics — `reverb`, `silence`, `vad`, `compand`
-10. Synthesis — `synth`, waveforms, noise, sweeps, chords
-11. Batch Processing — shell loops, parallel processing, piping
-12. Troubleshooting — silent output, clipping, format mismatch, `-V` diagnostics
-13. Beyond sox — man pages, LADSPA, ffmpeg, Rubber Band, libsox, limitations
+See [SUMMARY.md](src/SUMMARY.md), or read the
+[published book](https://pdx-cs-sound.github.io/taming-sox/).
 
 ## Prerequisites
 
@@ -53,6 +42,10 @@ for how to check what you have and where to build sox_ng from
 source.
 
 mdbook: <https://rust-lang.github.io/mdBook/guide/installation.html>
+
+## Authoring
+
+Conventions for editing the book are in [AUTHORING.md](AUTHORING.md).
 
 ## License
 

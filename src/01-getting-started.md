@@ -56,8 +56,8 @@ Three new pieces, one sentence each: `-n` in the input position
 means "no input file — generate audio instead." `synth 10 sine 440`
 synthesizes ten seconds of a 440 Hz sine wave. `gain -6` knocks it
 down 6 dB (roughly half amplitude), which leaves headroom so later
-effects don't clip. Chapter 11 goes deeper on `synth`; this is all
-you need for now.
+effects don't clip. [Chapter 11](11-synthesis.md) goes deeper on
+`synth`; this is all you need for now.
 
 ## Playing audio with play
 
@@ -73,8 +73,8 @@ device — on headless servers, use `sox ... -n` with `stat` or
 Scale the playback amplitude with `-v` (`1.0` = unchanged,
 `0.5` = half amplitude). Despite the name, `-v` operates on amplitude,
 which is linear — halving the amplitude reduces perceived loudness by
-6 dB, not by half. Use `gain` (chapter 3) if you want to think in
-decibels:
+6 dB, not by half. Use `gain` ([chapter 3](03-basic-effects.md)) if
+you want to think in decibels:
 
 ```bash
 play -v 0.5 test.wav
@@ -87,7 +87,7 @@ play test.wav trim 0 0.5
 ```
 
 That `trim 0 0.5` at the end is an *effect*. Don't worry about the
-syntax yet — chapter 2 will make it click.
+syntax yet — [chapter 2](02-conversions-anatomy.md) will make it click.
 
 ## Recording with rec
 

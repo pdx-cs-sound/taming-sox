@@ -2,10 +2,12 @@
 
 This chapter is the reference: the flags sox uses to describe
 audio, what each one means, and what sox infers when you leave
-them off. Chapter 6 follows up with recipes — resampling, channel
-changes, raw PCM, piping — built on this vocabulary.
+them off. [Chapter 6](06-format-conversions.md) follows up with
+recipes — resampling, channel changes, raw PCM, piping — built on
+this vocabulary.
 
-Recall from chapter 2: format flags describe the *next* filename.
+Recall from [chapter 2](02-conversions-anatomy.md): format flags
+describe the *next* filename.
 Put them in the wrong section and they apply to the wrong file.
 
 ## Two kinds of format
@@ -121,5 +123,5 @@ For **outputs**:
 
   This bites people whose downstream tools expect 16-bit PCM —
   consumer apps, embedded players, older DAWs — and reject 32-bit
-  WAVs as "unsupported." Chapter 6 covers how to specify output
-  shape explicitly.
+  WAVs as "unsupported." [Chapter 6](06-format-conversions.md)
+  covers how to specify output shape explicitly.

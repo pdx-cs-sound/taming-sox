@@ -1,6 +1,6 @@
 # Format Conversions
 
-Chapter 5 covered *what* the format flags mean. This chapter is the
+[Chapter 5](05-formats.md) covered *what* the format flags mean. This chapter is the
 recipe half: how to use them to change a sample rate, drop or add
 channels, write raw PCM, and pipe between sox processes.
 
@@ -27,7 +27,7 @@ sox mono.wav -c 2 stereo.wav            # mono → stereo (duplicates channel)
 `-c` uses sox's default algorithm: averaging when going down,
 duplication when going up. For anything more specific — dropping a
 channel, swapping L and R, custom mix weights — use `remix`
-(chapter 9).
+([chapter 9](09-combining.md)).
 
 ## Fully-specified output
 
@@ -90,4 +90,4 @@ sox test.wav -p trim 0 5 | sox - output.wav norm -3
 `-p` also preserves headroom across the pipe — samples above 0
 dBFS survive into the second sox, where they can be scaled back
 without clipping. A 16-bit WAV in the middle would clamp them.
-See the headroom note in chapter 4.
+See the headroom note in [chapter 4](04-chaining.md).

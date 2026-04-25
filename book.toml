@@ -7,3 +7,17 @@ src = "src"
 [output.html]
 default-theme = "navy"
 git-repository-url = "https://github.com/pdx-cs-sound/taming-sox"
+
+# Permalink redirects. Whenever a chapter is renamed, split, or
+# renumbered, add an entry here so old URLs (bookmarks, external
+# links) resolve to the new page. Keep entries even after several
+# rounds of reorg — they cost almost nothing.
+[output.html.redirect]
+"/05-format-options.html" = "05-formats.html"
+"/06-filters.html" = "07-filters.html"
+"/07-time-pitch.html" = "08-time-pitch.html"
+"/08-combining.html" = "09-combining.html"
+"/09-effects-dynamics.html" = "10-effects-dynamics.html"
+"/10-synthesis.html" = "11-synthesis.html"
+"/11-batch.html" = "12-batch.html"
+"/12-further.html" = "13-further.html"
