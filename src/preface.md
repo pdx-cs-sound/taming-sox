@@ -2,6 +2,8 @@
 
 *Bart Massey and Claude Code*
 
+Version 0.5 — 2026-04-23.
+
 Source: <https://github.com/pdx-cs-sound/taming-sox>.
 
 Licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
