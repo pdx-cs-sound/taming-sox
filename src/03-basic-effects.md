@@ -31,8 +31,11 @@ play test.wav fade [type] fade-in [duration] fade-out
 ```
 
 The type can be `q` (quarter-sine, natural sounding), `t` (linear),
-`h` (half-sine), or `l` (logarithmic). Omitting type defaults to
-linear.
+`h` (half-sine), `l` (logarithmic), or `p` (inverted parabola).
+Omitting type defaults to linear.
+
+<img src="figures/fade-curves.svg" width="280"
+     alt="Fade-in shapes for the five sox curve types">
 
 ```bash
 play test.wav fade 1         # 1s linear fade-in, play to end
